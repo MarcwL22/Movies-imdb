@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import pT from 'prop-types';
 // UIComponents
 import { SmallText, Heading3 } from '../../../components';
 // Assets
-import { COLORS, BREAKPOINTS } from '../../../assets/variables';
+import { COLORS } from '../../../assets/variables';
 
 const CardContainer = styled.div`
   height: 100%;
@@ -45,7 +46,7 @@ const CardSubtitle = styled(SmallText)`
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 `;
 
-const DashboardGridItem = ({ image, title, year, onPress = () => {} }) => {
+const DashboardGridItem = ({ image, title, year, onPress }) => {
   return (
     <CardContainer onClick={onPress}>
       <CardImage src={image} alt={`${title}img`} />
@@ -55,6 +56,19 @@ const DashboardGridItem = ({ image, title, year, onPress = () => {} }) => {
       </CardGroup>
     </CardContainer>
   );
+};
+
+DashboardGridItem.propTypes = {
+  image: pT.string,
+  title: pT.string,
+  year: pT.string,
+  onPress: pT.func
+};
+DashboardGridItem.defaultProps = {
+  image: 0,
+  title: 'titulo',
+  year: '2018',
+  onPress: () => {}
 };
 
 export default DashboardGridItem;

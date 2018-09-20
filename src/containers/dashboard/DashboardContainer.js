@@ -5,6 +5,7 @@ import { fetchMovie } from '../movie/duck';
 // UIComponents
 import { Container, Heading2 } from '../../components';
 // Components
+import MovieContainer from '../movie/MovieContainer';
 import DashboardHeader from './components/DashboardHeader';
 import DashboardGrid from './components/DashboardGrid';
 import styled from 'styled-components';
@@ -45,6 +46,7 @@ class DashboardContainer extends Component {
           <Heading2>{searchText}</Heading2>
         </GridTitleContainer>
         <DashboardGrid loading={loading} error={error} data={movies} onPress={this.props.fetchMovie} />
+        <MovieContainer />
       </div>
     );
   }

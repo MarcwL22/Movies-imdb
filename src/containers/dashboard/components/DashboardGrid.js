@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import pT from 'prop-types';
 // UIComponents
-import { Container, SmallText, Loading, Heading2, Heading3 } from '../../../components';
+import { Container, Loading } from '../../../components';
 // Components
 import DashboardGridItem from './DashboardGridItem';
 // Assets
@@ -56,6 +57,23 @@ const DashboardGrid = ({ data, loading, error, onPress }) => {
       </GridContainer>
     );
   }
+};
+
+DashboardGrid.propTypes = {
+  data: pT.shape({
+    Search: pT.array
+  }),
+  loading: pT.bool,
+  error: pT.bool,
+  onPress: pT.func
+};
+DashboardGrid.defaultProps = {
+  data: {
+    Search: []
+  },
+  loading: false,
+  error: false,
+  onPress: () => {}
 };
 
 export default DashboardGrid;

@@ -10,10 +10,12 @@ export const Heading1 = styled.h1`
 export const Heading2 = styled.h2`
   font-size: 2rem;
   color: ${COLORS.white50};
+  font-weight: 600;
 `;
 
 export const Heading3 = styled.h3`
   font-size: 1.6rem;
+  font-weight: 500;
 `;
 
 export const Text = styled.p`

@@ -1,15 +1,27 @@
-import React, { Component } from 'react'
-import styled from 'styled-components';
-import { connect } from 'react-redux'
-// Temporario
-import {BREAKPOINTS, COLORS} from '../../assets/variables';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// Actions
+import { openCloseMovieModal } from './duck';
+// Components
+import Modal from './components/MovieModal';
+import Movie from './components/Movie';
 
 class MovieContainer extends Component {
   render() {
+    const { modalOpen, movie } = this.props.movieReducer;
     return (
-
-    )
+      <Modal isOpen={modalOpen} handleClose={this.props.openCloseMovieModal}>
+        <Movie movie={movie} handleClose={this.props.openCloseMovieModal} />
+      </Modal>
+    );
   }
 }
 
-export default connect()()
+const mapStateToProps = ({ movieReducer }) => {
+  return { movieReducer };
+};
+
+export default connect(
+  mapStateToProps,
+  { openCloseMovieModal }
+)(MovieContainer);
