@@ -121,7 +121,7 @@ const DashboardHeader = ({ onChange = () => {}, value = '', onSubmit = () => {} 
     <Container>
       <Header>
         <HeaderLogo src={LogoImg} alt="Logo" />
-        <SearchForm onSubmit={onSubmit}>
+        <SearchForm action={onSubmit} onSubmit={onSubmit}>
           <SearchInput value={value} onChange={onChange} placeholder={'Que filme você procura?'} />
           <SearchInputMobile value={value} type="search" onChange={onChange} placeholder={'Que filme você procura?'} />
           <SearchButton type="submit">

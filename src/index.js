@@ -39,10 +39,8 @@ injectGlobal`
   }
 `;
 
-const store = createStore(reducer, {}, applyMiddleware(thunk));
-
 render(
-  <Provider store={store}>
+  <Provider store={createStore(reducer, {}, applyMiddleware(thunk))}>
     <Router>
       <Route exact path={'/'} component={DashboardContainer} />
     </Router>

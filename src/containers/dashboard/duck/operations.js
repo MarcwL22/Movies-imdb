@@ -1,17 +1,17 @@
 import * as Creators from './actions';
-// API Service
-import { Api } from '../../../services/Api';
+import axios from 'axios';
+import config from '../../../config';
 
-export const fetchMovies = searchText => dispatch => {
-  dispatch(Creators.fetchStart());
-  Api.get('', {
+const { APIKEY } = config;
+
+export const fetchMovies = searchText => {
+  let req = axios.get(`http://www.omdbapi.com/?apikey=${APIKEY}`, {
     params: {
       s: searchText
     }
-  })
-    .then(({ data }) => {
-      console.log(data);
-      dispatch(Creators.fetchComplete(data));
-    })
-    .catch(() => dispatch(Creators.fetchError()));
+  });
+  return dispatch => {
+    dispatch(Creators.fetchStart());
+    return req.then(({ data }) => dispatch(Creators.fetchComplete(data))).catch(() => dispatch(Creators.fetchError()));
+  };
 };

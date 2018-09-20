@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import pT from 'prop-types';
 // UIComponents
-import { Container, Loading } from '../../../components';
+import { Container, Loading, Heading2 } from '../../../components';
 // Components
 import DashboardGridItem from './DashboardGridItem';
 // Assets
@@ -32,7 +32,14 @@ const GridLoading = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const DashboardGrid = ({ data, loading, error, onPress }) => {
+const GridErrorText = styled(Heading2)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const DashboardGrid = ({ data, loading, error, onPress }) => {
   if (loading) {
     return (
       <GridLoading>
@@ -40,7 +47,7 @@ const DashboardGrid = ({ data, loading, error, onPress }) => {
       </GridLoading>
     );
   } else if (!loading && error) {
-    return <div>Error!</div>;
+    return <GridErrorText>Ops! Não achamos nada</GridErrorText>;
   } else {
     return (
       <GridContainer>

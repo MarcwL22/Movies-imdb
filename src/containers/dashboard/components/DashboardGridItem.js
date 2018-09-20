@@ -4,7 +4,7 @@ import pT from 'prop-types';
 // UIComponents
 import { SmallText, Heading3 } from '../../../components';
 // Assets
-import { COLORS } from '../../../assets/variables';
+import { COLORS, BREAKPOINTS } from '../../../assets/variables';
 
 const CardContainer = styled.div`
   height: 100%;
@@ -20,8 +20,10 @@ const CardImage = styled.img`
   width: 100%;
   transition: all 0.2s;
   border-radius: 0.5rem;
-  ${CardContainer}:hover & {
-    filter: opacity(0.5);
+  @media (min-width: ${BREAKPOINTS.phone}) {
+    ${CardContainer}:hover & {
+      filter: opacity(0.5);
+    }
   }
 `;
 const CardGroup = styled.div`
@@ -30,9 +32,11 @@ const CardGroup = styled.div`
   opacity: 0;
   padding: 1.6rem;
   transition: all 0.2s;
-  ${CardContainer}:hover & {
-    bottom: 2rem;
-    opacity: 1;
+  @media (min-width: ${BREAKPOINTS.phone}) {
+    ${CardContainer}:hover & {
+      bottom: 2rem;
+      opacity: 1;
+    }
   }
 `;
 const CardTitle = styled(Heading3)`

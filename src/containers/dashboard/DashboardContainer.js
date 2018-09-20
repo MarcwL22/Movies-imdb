@@ -19,8 +19,8 @@ const GridTitleContainer = styled(Container)`
   }
 `;
 
-class DashboardContainer extends Component {
-  state = { searchText: 'Avengers' };
+export class DashboardContainer extends Component {
+  state = { searchText: '' };
 
   componentDidMount = () => {
     this.props.fetchMovies('Avengers');
@@ -34,11 +34,12 @@ class DashboardContainer extends Component {
 
   onChangeText = event => {
     this.setState({ searchText: event.target.value });
+    this.props.fetchMovies(this.state.searchText);
   };
 
   render() {
     const { searchText } = this.state;
-    const { movies, loading, error } = this.props.dashboardReducer;
+    const { movies, loading, error } = this.props;
     return (
       <div>
         <DashboardHeader onSubmit={this.formSubmit} value={searchText} onChange={this.onChangeText} />
@@ -53,7 +54,7 @@ class DashboardContainer extends Component {
 }
 
 const mapStateToProps = ({ dashboardReducer }) => {
-  return { dashboardReducer };
+  return { ...dashboardReducer };
 };
 
 export default connect(
