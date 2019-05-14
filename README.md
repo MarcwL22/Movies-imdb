@@ -1,4 +1,4 @@
-# Challenge Indeva Front end
+# Movies, (from IMDB database)
 
 ## Install and usage
 
